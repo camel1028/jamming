@@ -3,17 +3,28 @@ import './App.css';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { Playlist } from '../Playlist/Playlist'
 import { SearchResults } from '../SearchResults/SearchResults';
+import { Track } from '../Track/Track';
+import { TrackList } from '../TrackList/TrackList';
 
-function App() {
-  return (
-    <div className="Track">
-      <div className="Track-information">
-        <h3>track name will go here</h3> 
-        <p>track artist will go here - track album will go here</p>
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    
+    this.state = { searchResults: []};
+  }
+  render() {
+    return (
+      <div>
+        <h1>Ja<span class="highlight">mmm</span>ing</h1>
+        <div className="App">
+          <SearchBar/>
+          <div className="App-playlist">
+            <SearchResults searchResults={this.state.searchResults}/>
+            <Playlist/>
+          </div>
+        </div>
       </div>
-      <button className="Track-action"> + or - will go here</button>
-    </div>
-  );
+    )};
 }
 
 export default App;
