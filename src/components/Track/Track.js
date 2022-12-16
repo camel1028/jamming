@@ -4,8 +4,7 @@ import "./Track.css";
 export class Track extends React.Component{
 
   renderAction() {
-    let isRemoval;
-    isRemoval ? <button>-</button> : <button>+</button>
+    this.props.isRemoval ? <button>-</button> : <button>+</button>
   }
   render(){
     return (
@@ -14,7 +13,7 @@ export class Track extends React.Component{
           <h3>{this.props.track.name}</h3>
           <p>{this.props.track.artist} - {this.props.track.album}</p>
         </div>
-          <button className="Track-action">+ or - will go here {this.renderAction} </button>
+          <button className="Track-action"> {this.renderAction()} </button>
       </div>
     )}
 }
