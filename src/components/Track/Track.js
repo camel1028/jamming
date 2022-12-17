@@ -6,11 +6,12 @@ export class Track extends React.Component{
     super(props);
     this.renderAction = this.renderAction.bind(this);
     this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
   }
 
   renderAction() {
-    if (this.props.isRemoval === true) {
-      return <button>-</button>
+    if (this.props.isRemoval === true) {    //this function is changing it in the results, but not on the playlist.
+      return <button onClick={this.removeTrack}>-</button>
     } else {
       return <button onClick={this.addTrack}>+</button>
     }
@@ -20,6 +21,12 @@ export class Track extends React.Component{
     this.props.onAdd(this.props.track); //we are using the on add method here defined in app.js. 
                                         //since it takes in an argument, we are creating another method to pass in a value.
   }
+
+  removeTrack() {
+    this.props.onRemove(this.props.track); //look back at the method in app.js, it uses the track id we provide here 
+  }   //important principle to define an event handler that passes in an argument to your method. 
+
+
   render(){
     return (
       <div className="Track">
