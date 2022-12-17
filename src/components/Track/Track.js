@@ -2,9 +2,23 @@ import React from "react";
 import "./Track.css";
 
 export class Track extends React.Component{
+  constructor(props){
+    super(props);
+    this.renderAction = this.renderAction.bind(this);
+    this.addTrack = this.addTrack.bind(this);
+  }
 
   renderAction() {
-    this.props.isRemoval ? <button>-</button> : <button>+</button>
+    if (this.props.isRemoval === true) {
+      return <button>-</button>
+    } else {
+      return <button onClick={this.addTrack}>+</button>
+    }
+  }
+
+  addTrack() {
+    this.props.onAdd(this.props.track); //we are using the on add method here defined in app.js. 
+                                        //since it takes in an argument, we are creating another method to pass in a value.
   }
   render(){
     return (
@@ -13,7 +27,7 @@ export class Track extends React.Component{
           <h3>{this.props.track.name}</h3>
           <p>{this.props.track.artist} - {this.props.track.album}</p>
         </div>
-          <button className="Track-action"> {this.renderAction()} </button>
+          <button className="Track-action"> {this.renderAction()}  </button>
       </div>
     )}
 }

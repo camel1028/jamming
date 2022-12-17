@@ -18,16 +18,21 @@ class App extends React.Component {
       playlistTracks: ['playlistTrack state', '2', '3']
     };
     this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
     }
    
 
   addTrack(track) {
-    if (this.state.playlistTracks.indexOf(track.id) >= 0){ //if track is in the list
-        return;
-      } else {
-        this.setState( {playlistTracks: this.state.playlistTracks.push(track.id)}) //should alter the state obj to include a list with the new track added.
+    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) { //checks if track is in
+      return;
+    } else {
+        this.setState( track ) //should alter the state obj to include a list with the new track added.
       }                 //step 41
     }
+  
+  removeTrack(track) {
+    this.setState( this.state.playlistTracks.filter(!track.id) )
+  }
 
   render() {
     return (
@@ -39,7 +44,8 @@ class App extends React.Component {
             <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
             <Playlist 
               playlistName={this.state.playlistName} 
-              playlistTracks={this.state.playlistTracks}/>
+              playlistTracks={this.state.playlistTracks}
+              onAdd={this.props.addTrack}/>
           </div>
         </div>
       </div>
