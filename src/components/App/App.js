@@ -27,11 +27,13 @@ class App extends React.Component {
    
 
   addTrack(track) {
-    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) { //checks if track is in
+    let tracks = this.state.playlistTracks;
+    if (tracks.find(savedTrack => savedTrack.id === track.id)) { //checks if track is in
       return;
-    } else {
-        this.setState( track ) //should alter the state obj to include a list with the new track added.
-      }                 //step 41
+    } 
+    tracks.push(track);
+    this.setState( {playlistTracks: tracks} ); //should alter the state obj to include a list with the new track added.
+                  //step 41
     }
   
   removeTrack(track) {
