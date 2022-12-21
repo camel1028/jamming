@@ -11,9 +11,9 @@ export class Track extends React.Component{
 
   renderAction() {
     if (this.props.isRemoval === true) {    //this function is changing it in the results, but not on the playlist.
-      return <button onClick={this.removeTrack}>-</button>
+      return <button className='Track-action' onClick={this.removeTrack}>-</button>
     } else {
-      return <button onClick={this.addTrack}>+</button>
+      return <button className='Track-action' onClick={this.addTrack}>+</button>
     }
   }
 
