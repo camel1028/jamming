@@ -44,7 +44,9 @@ class App extends React.Component {
 
   savePlaylist() {
     let trackUris = this.state.playlistTracks.map(track => track.uri); //will create a new array, that has the uri of each track added.
-    return trackUris;
+    Spotify.savePlaylist(this.state.playlistName, trackUris).then(() => {
+      this.setState( { playlistName: 'New Playlist', playlistTracks: []}) //empty array bc when saving new playlist init state should be a generic new playlist
+    })
   }
 
   search(term) {
