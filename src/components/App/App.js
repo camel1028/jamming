@@ -3,20 +3,16 @@ import './App.css';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { Playlist } from '../Playlist/Playlist'
 import { SearchResults } from '../SearchResults/SearchResults';
-import { Spotify } from '../../util/Spotify';
+import Spotify from '../../util/Spotify';
 
 class App extends React.Component {
   constructor(props){
     super(props);
     
     this.state = { 
-      searchResults: [
-        {name: 'the name', artist: 'the artist', album: 'the album', id: 1},
-        {name: 'the name2', artist: 'the artist2', album: 'the album2', id: 2} ], 
-      playlistName: 'playlistName state',
-      playlistTracks: [
-        {name: 'the name', artist: 'the artist', album: 'the album', id: 1},
-        {name: 'the name2', artist: 'the artist2', album: 'the album2', id: 2} ], 
+      searchResults: [], 
+      playlistName: 'My Playlist',
+      playlistTracks: [] 
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
